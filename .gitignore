@@ -2,7 +2,7 @@
 #
 # Set up for Visual Studio Environment
 #
-# Special gitignore for development branches trackinbg all project files
+# Special gitignore for release branches trackinbg only setup files
 
 # Object files
 *.o
@@ -12,9 +12,12 @@
 
 # Project Folders
 *.*
+bin/
 bin/Debug/
 bin/Release/
 obj/
+Properties/
+Resources/
 test_cases/
 
 # Executables
@@ -31,9 +34,16 @@ disassembly/
 publish/
 *.pdb
 *.suo
+*.sln
 *.zip
 *.mk
 *.bash
+*.cs
+*.ico
+*.ini
+*.xml
+*.resx
+*.config
 Makefile-genesis.properties
 
 # Misc
