@@ -619,7 +619,7 @@ namespace smpsDebugUartTestWindow
             double ProcessTicks = 0.0;
 
             ProcessTicks = DateTime.Now.Ticks;
-//            try
+            try
             {
                 // output statistics
                 tmrMain.Enabled = false;
@@ -793,8 +793,13 @@ namespace smpsDebugUartTestWindow
                 }
 
                 lblStreamErrorCounter.Text = dbgUStats.DataStreamErrors.ToString();
+                toolStripStatusLabel.Text = "(no errors detected)";
             }
-//            catch { }
+            catch {
+
+                toolStripStatusLabel.Text = "Warning: Data Format Error Detected";
+            
+            }
 
             ProcessTicks = ((DateTime.Now.Ticks - ProcessTicks)/10000.0);
             toolStripStatusProcessTicks.Text = String.Format("{0:0.0}", ProcessTicks) + " ms";
