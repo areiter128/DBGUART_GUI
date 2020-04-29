@@ -677,6 +677,7 @@ namespace smpsDebugUartTestWindow
                         // == PARSING USER DATA INTO MONITOR TABLE ===============================
                         if ((_user_file_loaded) && (dbgUart.Frames[_i].IsComplete))
                         {
+                            
                             _user_cid = UserDataFile.ReadKey("Data" + _k.ToString(), "CID", "0");
 
                             if (dbgUart.Frames[_i].CID.ToString("X04").ToUpper() == _user_cid.ToUpper())
@@ -721,6 +722,8 @@ namespace smpsDebugUartTestWindow
                                     }
                                 }
                             }
+
+                            
                         }
                         // == END OF PARSING USER DATA INTO MONITOR TABLE ========================
                         }
@@ -1197,7 +1200,9 @@ namespace smpsDebugUartTestWindow
 
             // Send data
             if ((dbgUTxFrame.ValidateFrame(dbgUTxFrame.ByteStream) && (serialPort.IsOpen)))
+            { 
                 serialPort.Write(dbgUTxFrame.ByteStream, 0, dbgUTxFrame.ByteStream.Length);
+            }
 
             return;
         }
