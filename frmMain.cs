@@ -709,8 +709,11 @@ namespace smpsDebugUartTestWindow
 
                                     if ((lv != null) && (!_is_hidden))
                                     {
+                                        if (_scale == 1.0)
+                                            lv.SubItems[2].Text = String.Format(_data_format, Convert.ToInt32(_data_val));
+                                        else
+                                            lv.SubItems[2].Text = String.Format(_data_format, _data_val);
 
-                                        lv.SubItems[2].Text = String.Format(_data_format, _data_val);
                                         lv.SubItems[4].Text = ldum.ToString();
                                         lv.SubItems[5].Text = ldum.ToString("X04");
                                         lv.SubItems[6].Text = Convert.ToString(ldum, 2).PadLeft((_datlen * 8), '0'); ;
