@@ -1920,6 +1920,15 @@ namespace smpsDebugUartTestWindow
 
         }
 
+        private void lvRxFrames_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.L) && (e.Control)) // CTRL + L clears the list of received frames
+            {
+                lvRxFrames.Items.Clear();
+            }
+        }
+
+
     }
 }
 
