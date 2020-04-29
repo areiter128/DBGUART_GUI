@@ -145,6 +145,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbUserFileName = new System.Windows.Forms.ToolStripComboBox();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpPortConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tmrMain)).BeginInit();
             this.tabMain.SuspendLayout();
@@ -669,6 +671,7 @@
             this.lvRxFrames.TabIndex = 1;
             this.lvRxFrames.UseCompatibleStateImageBehavior = false;
             this.lvRxFrames.View = System.Windows.Forms.View.Details;
+            this.lvRxFrames.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvRxFrames_KeyDown);
             this.lvRxFrames.Resize += new System.EventHandler(this.lvRxFrames_Resize);
             // 
             // colID
@@ -1004,6 +1007,7 @@
             this.lvDataMonitor.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvDataMonitor.FullRowSelect = true;
             this.lvDataMonitor.HideSelection = false;
+            this.lvDataMonitor.LabelWrap = false;
             this.lvDataMonitor.Location = new System.Drawing.Point(3, 19);
             this.lvDataMonitor.MultiSelect = false;
             this.lvDataMonitor.Name = "lvDataMonitor";
@@ -1305,6 +1309,8 @@
             this.stbMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.pgbBuffer,
+            this.toolStripSplitButton2,
+            this.toolStripStatusLabel,
             this.toolStripSplitButton1,
             this.toolStripStatusLabel2,
             this.toolStripStatusProcessTicks});
@@ -1332,7 +1338,7 @@
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(838, 17);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(715, 17);
             this.toolStripSplitButton1.Spring = true;
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
@@ -1344,10 +1350,12 @@
             // 
             // toolStripStatusProcessTicks
             // 
+            this.toolStripStatusProcessTicks.AutoSize = false;
             this.toolStripStatusProcessTicks.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusProcessTicks.Name = "toolStripStatusProcessTicks";
-            this.toolStripStatusProcessTicks.Size = new System.Drawing.Size(13, 17);
+            this.toolStripStatusProcessTicks.Size = new System.Drawing.Size(65, 17);
             this.toolStripStatusProcessTicks.Text = "0";
+            this.toolStripStatusProcessTicks.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tmrOpenPortNotice
             // 
@@ -1389,7 +1397,7 @@
             // 
             // newToolStripMenuItem
             // 
-            this.newToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources._new;
+            this.newToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources.icon_new;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
@@ -1398,7 +1406,7 @@
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources.open;
+            this.openToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources.icon_open;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
@@ -1407,7 +1415,7 @@
             // 
             // saveAsToolStripMenuItem
             // 
-            this.saveAsToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources.save;
+            this.saveAsToolStripMenuItem.Image = global::smpsDebugUART.Properties.Resources.icon_save;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
@@ -1464,6 +1472,22 @@
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
             this.configurationToolStripMenuItem.Size = new System.Drawing.Size(96, 23);
             this.configurationToolStripMenuItem.Text = "Configuration:";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripSplitButton2
+            // 
+            this.toolStripSplitButton2.AutoSize = false;
+            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.toolStripSplitButton2.Enabled = false;
+            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
+            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
+            this.toolStripSplitButton2.Size = new System.Drawing.Size(40, 17);
+            this.toolStripSplitButton2.Text = "toolStripSplitButton2";
             // 
             // frmMain
             // 
@@ -1633,6 +1657,8 @@
         private System.Windows.Forms.TabPage tabTerminal;
         private System.Windows.Forms.RichTextBox txtOutputTerminal;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripSplitButton2;
     }
 }
 
