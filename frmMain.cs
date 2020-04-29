@@ -427,6 +427,7 @@ namespace smpsDebugUartTestWindow
             byte[] _frame_data = new byte[0];
 
             SerialPort _serial = (SerialPort)sender;
+            if (!_serial.IsOpen) return;
 
             dbgUStats.DataPackageCount++;
 //            dbgUStats.ReceiveInterval = DateTime.Now.Ticks;
@@ -436,7 +437,10 @@ namespace smpsDebugUartTestWindow
                 dbgUStats.DataPackageLength = fifo_bufLen; // Monitor received buffer size
 
             while ((_serial.BytesToRead > 0) && (!dbgUBuf.SuspendReceive))
-            { 
+            {
+
+                // Safety switch in case port got closed while receiving frame
+                if (!_serial.IsOpen) return;
 
                 // Read byte from RS232 FIFO into Receive Buffer
                 rx_val = _serial.ReadByte();
