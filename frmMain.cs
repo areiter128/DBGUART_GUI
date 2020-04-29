@@ -1320,6 +1320,8 @@ namespace smpsDebugUartTestWindow
                 }
 
                 txtDATA.Text = sdum.Trim();
+                GenerateTxFrame(sender, e);
+
 
             }
 
