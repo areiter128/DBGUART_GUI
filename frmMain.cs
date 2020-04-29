@@ -1165,6 +1165,7 @@ namespace smpsDebugUartTestWindow
                     txtCRC.Text.Trim() + " " +
                     smpsDebugUART.smpsDebugUARTFrame.END_OF_FRAME.ToString("X02").Trim()
                 );
+            lv.SubItems[1].Text = lv.SubItems[1].Text.Replace("  ", " "); // Remove DOUBLE_SPACE in case there is no data content
             lv.ImageIndex = 0;
 
             UserDataFile.WriteKey("TxFrames", lv.Name, (lv.SubItems[0].Text.Trim() + "\t" + lv.SubItems[1].Text.Trim()));
@@ -1317,7 +1318,8 @@ namespace smpsDebugUartTestWindow
 
                 // Parse Frame Items
                 sdum = lv.SubItems[1].Text.Trim();
-                _split_cmd = sdum.Split(new Char[] { ' ' });
+                sdum = sdum.Replace("  ", " ");
+                _split_cmd = sdum.Split(new Char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                 // Add ID
                 sdum = _split_cmd[1] + " " + _split_cmd[2];
