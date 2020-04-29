@@ -534,10 +534,13 @@ namespace smpsDebugUartTestWindow
 
             try
             {
+                // Clear the data content and buffer window and re-initialize receive buffers
                 _buf_size = Convert.ToInt32(txtFrameBuffer.Text);
                 if (_buf_size == 0) _buf_size = dbgUartFrameBufferSizeDefault;
-                dbgUart.FrameBufferSize = _buf_size;
 
+
+                txtBufferView.Clear();
+                dbgUart.FrameBufferSize = _buf_size;
                 txtFrameBuffer.BackColor = SystemColors.Window;
             }
             catch {
