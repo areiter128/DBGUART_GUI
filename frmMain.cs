@@ -184,6 +184,12 @@ namespace smpsDebugUartTestWindow
             splitFrames.SplitterDistance = (splitFrames.Height / 2);
             tabMain.SelectTab(Convert.ToInt32(ProjectFile.ReadKey("settings", "last_tab", "0")));
 
+            // Ebalble Double Buffering where ever possible
+
+            this.DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+
         }
 
         /* ************************************************************************************************ */
