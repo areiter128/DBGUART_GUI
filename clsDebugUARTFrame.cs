@@ -272,7 +272,14 @@ namespace smpsDebugUART
         public int FrameBufferSize               // size of data frame buffer
         {
             get { return _FrameBufferSize; }
-            set { _FrameBufferSize = value; }
+            set {
+
+                int _buf_size = value; // read new buffer size
+                if (_buf_size == 0) _buf_size = 32; // Set and clamp buffer size
+                _frames = null; // Flush all buffered frames
+                _frame_count = 0; // Clear Frame Counter 
+                _FrameBufferSize = _buf_size; // Set new buffer size
+            }
         }
 
         private long _crc_error_count = 0;
